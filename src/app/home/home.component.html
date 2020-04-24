@@ -1,0 +1,11 @@
+<button (click)="googleLogin()">
+  Sign In With Google
+</button>
+
+<br><br><br>
+
+<button (click)="testAuth()">
+  Test Auth
+</button>
+
+<p *ngIf="user">{{user.email}}</p>

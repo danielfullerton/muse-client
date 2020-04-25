@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {NavigationService, NavStyle} from './navigation.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,16 +10,27 @@ export class NavigationComponent implements OnInit {
   @ViewChild('sidebar', { static: false })
   sidebarElement: ElementRef;
 
+  @ViewChild('navBar', { static: false })
+  navBar: ElementRef;
   showSideBar = false;
 
-  constructor() { }
+  constructor(
+    private navigationService: NavigationService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.navigationService.stylesChanged.subscribe(styles => {
+      this.navBar.nativeElement.style.backgroundColor = styles.backgroundColor;
+    });
+
+    this.navigationService.sideBarClosed.subscribe(() => {
+      this.showSideBar = false;
+    });
+  }
 
   onContainerClick(event: MouseEvent) {
     const el = event.target as Element;
-    const sidebarElement = this.sidebarElement.nativeElement;
-    if (!sidebarElement.contains(el)) {
+    if (!this.sidebarElement.nativeElement.contains(el)) {
       this.showSideBar = false;
     }
   }

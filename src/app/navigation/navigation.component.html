@@ -1,4 +1,4 @@
-<div id="navigation">
+<div id="navigation" #navBar>
   <div class="title">
     <h1>Muse</h1>
   </div>
@@ -16,19 +16,19 @@
     *ngIf="showSideBar">
     <div id="sidebar" #sidebar>
       <div class="option">
-        <a href="">Home</a>
+        <a [routerLink]="['/']">Home</a>
       </div>
       <hr>
       <div class="option">
-        <a href="">Account</a>
+        <a [routerLink]="['/account']">Account</a>
       </div>
       <hr>
       <div class="option">
-        <a href="">Settings</a>
+        <a [routerLink]="['/settings']">Settings</a>
       </div>
       <hr>
       <div class="option">
-        <a href="">Contact Us</a>
+        <a [routerLink]="['/contact']">Contact Us</a>
       </div>
     </div>
   </div>

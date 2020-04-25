@@ -3,10 +3,33 @@
     <h1>Muse</h1>
   </div>
   <div class="menu">
-    <div class="menu-icon">
+    <div class="menu-icon" (click)="onMenuIconClick()">
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
+    </div>
+  </div>
+
+  <div
+    id="sidebar-container"
+    (click)="onContainerClick($event)"
+    *ngIf="showSideBar">
+    <div id="sidebar" #sidebar>
+      <div class="option">
+        <a href="">Home</a>
+      </div>
+      <hr>
+      <div class="option">
+        <a href="">Account</a>
+      </div>
+      <hr>
+      <div class="option">
+        <a href="">Settings</a>
+      </div>
+      <hr>
+      <div class="option">
+        <a href="">Contact Us</a>
+      </div>
     </div>
   </div>
 </div>

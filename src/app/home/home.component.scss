@@ -1,0 +1,87 @@
+#home {
+  height: 75vh;
+  background: #5cdb95;
+  padding-top: 25vh;
+  background: url("../../assets/home-screen.png");
+  background-size: cover;
+  position: relative;
+
+  .filter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background: #00000044;
+  }
+  .hero {
+    height: 40vh;
+    position: relative;
+    z-index: 2;
+    .large-text {
+      width: 80%;
+      margin: 0 auto;
+      h2 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
+        font-size: 36px;
+        color: white;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+
+    .sub-text {
+      h5 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        text-align: center;
+        width: 80%;
+        margin: 30px auto 0 auto;
+        color: white;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .button-container {
+    position: relative;
+    z-index: 2;
+    height: 35vh;
+
+    button {
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+      color: white;
+      font-size: 24px;
+      display: block;
+      min-width: 225px;
+      max-width: 300px;
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+      margin: 0 auto 20px auto;
+      border-radius: 28px;
+      outline: none;
+      box-shadow: 1px 1px 1px #888;
+      transition: 20ms ease-in-out;
+    }
+
+    .learn-more {
+      border: 2px solid white;
+      background: #00000000;
+      &:active {
+        background: darken(#00000055, 20%);
+      }
+    }
+
+    .sign-in {
+      border: none;
+      background: #222;
+      &:active {
+        background: darken(#222, 20%);
+      }
+    }
+  }
+}

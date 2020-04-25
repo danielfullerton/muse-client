@@ -1,0 +1,46 @@
+#navigation {
+  background: #00000000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1000;
+
+  .title {
+    padding: 15px;
+    width: 75%;
+    h1 {
+      font-family: 'Righteous', sans-serif;
+      font-size: 46px;
+      color: white;
+      margin: 0;
+    }
+  }
+
+  .menu {
+    width: 25%;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 15px;
+
+    .menu-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      .bar {
+        background-color: white;
+        height: 20%;
+        margin: 8% 0;
+        width: 100%;
+      }
+    }
+  }
+}

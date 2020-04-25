@@ -1,11 +1,19 @@
-<button (click)="googleLogin()">
-  Sign In With Google
-</button>
-
-<br><br><br>
-
-<button (click)="testAuth()">
-  Test Auth
-</button>
-
-<p *ngIf="user">{{user.email}}</p>
+<div id="home">
+  <div class="filter"></div>
+  <div class="hero">
+    <div class="large-text">
+      <h2>Add Video to Your Spotify Experience.</h2>
+    </div>
+    <div class="sub-text">
+      <h5>Convert songs and playlists into music videos</h5>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="learn-more">
+      LEARN MORE
+    </button>
+    <button class="sign-in" (click)="googleLogin()">
+      SIGN IN
+    </button>
+  </div>
+</div>

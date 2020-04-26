@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LearnMoreComponent } from './learn-more/learn-more.component';
 import { AuthGuard } from './common/guards/auth.guard';
 import { AccountComponent } from './account/account.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AccountComponent } from './account/account.component';
     HomeComponent,
     NavigationComponent,
     LearnMoreComponent,
-    AccountComponent
+    AccountComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

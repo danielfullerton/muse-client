@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         if (['/', '/home'].includes(event.url)) {
           this.navigationService.transparentMode();
         } else {
-          this.navigationService.darkMode();
+          this.navigationService.transparentMode();
         }
       }
       this.navigationService.closeSideBar();

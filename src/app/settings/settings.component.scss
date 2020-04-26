@@ -1,0 +1,45 @@
+#settings {
+  .settings-section {
+    margin: 20px auto 80px auto;
+    width: 90%;
+
+    .header {
+      h3 {
+        margin: 0;
+        text-align: right;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+      }
+    }
+
+    hr {
+      width: 100%;
+      margin: 10px auto;
+      border-width: 0.1px;
+      border-style: solid;
+      border-color: #888;
+    }
+
+    .option {
+      .option-elements {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        span {
+          color: #eee;
+          font-family: 'Raleway', sans-serif;
+          font-weight: lighter;
+          margin-right: 10px;
+          font-size: 20px;
+        }
+        i {
+          color: #eee;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

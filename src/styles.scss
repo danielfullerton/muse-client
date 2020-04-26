@@ -9,3 +9,17 @@ html, body {
 * {
   -webkit-tap-highlight-color: #00000000;
 }
+
+body {
+  background: #222;
+}
+
+$navbarHeight: 60px;
+
+.padded-top {
+  padding-top: $navbarHeight;
+}
+
+.padded-full-screen {
+  height: calc(100vh - #{$navbarHeight});
+}

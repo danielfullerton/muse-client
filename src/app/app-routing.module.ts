@@ -5,18 +5,28 @@ import {LearnMoreComponent} from './learn-more/learn-more.component';
 import {AuthGuard} from './common/guards/auth.guard';
 import {AccountComponent} from './account/account.component';
 import {SettingsComponent} from './settings/settings.component';
+import {FetchUserGuard} from './common/guards/fetchUser.guard';
+import {RedirectToPlaylistsGuard} from './common/guards/redirectToPlaylists.guard';
+import {PlaylistsComponent} from './playlists/playlists.component';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [FetchUserGuard],
     children: [
       {
         path: 'home',
         component: HomeComponent,
+        canActivate: [RedirectToPlaylistsGuard]
       },
       {
         path: 'learn-more',
         component: LearnMoreComponent
+      },
+      {
+        path: 'playlists',
+        component: PlaylistsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'account',

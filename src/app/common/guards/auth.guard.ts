@@ -9,11 +9,11 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    try {
-      await this.authService.fetchUser().toPromise();
-      return true;
-    } catch (e) {
-      return false;
+    const url = '/' + route.url.map(seg => seg.path).join('/');
+    const user = this.authService.getUser();
+    if (!user) {
+      window.location.replace(this.authService.getGoogleAuthUrl({ redirectPath: url }));
     }
+    return true;
   }
 }

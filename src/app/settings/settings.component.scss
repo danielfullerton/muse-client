@@ -1,6 +1,6 @@
 #settings {
   .settings-section {
-    margin: 20px auto 80px auto;
+    margin: 20px auto 40px auto;
     width: 90%;
 
     .header {
@@ -16,7 +16,6 @@
 
     hr {
       width: 100%;
-      margin: 10px auto;
       border-width: 0.1px;
       border-style: solid;
       border-color: #888;
@@ -24,16 +23,34 @@
 
     .option {
       .option-elements {
+        outline: none;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
+        transition: 50ms ease-in-out;
+        padding: 5px;
+
         span {
           color: #eee;
           font-family: 'Raleway', sans-serif;
           font-weight: lighter;
           margin-right: 10px;
           font-size: 20px;
+
+          &.connected {
+            color: #5CDB95;
+          }
+        }
+
+        &:active {
+          background: #55555588;
+        }
+
+        &.no-chevron {
+          span {
+            margin: 0;
+          }
         }
         i {
           color: #eee;

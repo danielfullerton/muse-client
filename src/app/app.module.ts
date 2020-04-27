@@ -3,15 +3,17 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
-import {AuthInterceptor} from './common/interceptors/auth.interceptor';
-import { NavigationComponent } from './navigation/navigation.component';
+import {NavigationComponent} from './navigation/navigation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { LearnMoreComponent } from './learn-more/learn-more.component';
-import { AuthGuard } from './common/guards/auth.guard';
-import { AccountComponent } from './account/account.component';
-import { SettingsComponent } from './settings/settings.component';
+import {LearnMoreComponent} from './learn-more/learn-more.component';
+import {AuthGuard} from './common/guards/auth.guard';
+import {AccountComponent} from './account/account.component';
+import {SettingsComponent} from './settings/settings.component';
+import {FetchUserGuard} from './common/guards/fetchUser.guard';
+import {RedirectToPlaylistsGuard} from './common/guards/redirectToPlaylists.guard';
+import { PlaylistsComponent } from './playlists/playlists.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { SettingsComponent } from './settings/settings.component';
     NavigationComponent,
     LearnMoreComponent,
     AccountComponent,
-    SettingsComponent
+    SettingsComponent,
+    PlaylistsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,12 +32,9 @@ import { SettingsComponent } from './settings/settings.component';
     BrowserAnimationsModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    AuthGuard
+    AuthGuard,
+    FetchUserGuard,
+    RedirectToPlaylistsGuard
   ],
   bootstrap: [AppComponent]
 })

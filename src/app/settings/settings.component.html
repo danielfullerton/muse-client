@@ -1,6 +1,19 @@
 <div id="settings" class="padded-top padded-full-screen">
   <div class="settings-section">
     <div class="header">
+      <h3>My Account</h3>
+    </div>
+    <hr class="header-break">
+    <div class="option">
+      <div class="option-elements" [routerLink]="['/account']">
+        <span>Account Settings</span>
+        <i class="fa fa-angle-right"></i>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="header">
       <h3>General</h3>
     </div>
     <hr class="header-break">
@@ -24,16 +37,14 @@
     </div>
     <hr>
     <div class="option">
-      <div class="option-elements" (click)="onSpotifyConnect()">
-        <span>{{this.user.spotifyId ? 'Disconnect Spotify' : 'Connect Spotify'}}</span>
-        <i class="fa fa-angle-right"></i>
+      <div class="option-elements no-chevron" (click)="onSpotifyConnect()">
+        <span [ngClass]="{connected: this.user.spotifyId}">{{this.user.spotifyId ? 'Spotify Connected' : 'Connect Spotify'}}</span>
       </div>
       <hr>
     </div>
     <div class="option">
-      <div class="option-elements">
-        <span>Connect YouTube</span>
-        <i class="fa fa-angle-right"></i>
+      <div class="option-elements no-chevron" (click)="onYoutubeConnect()">
+        <span [ngClass]="{connected: this.user.youtubeConnected}">{{this.user.youtubeConnected ? 'YouTube Connected' : 'Connect YouTube'}}</span>
       </div>
     </div>
   </div>

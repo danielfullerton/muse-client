@@ -24,8 +24,8 @@
     </div>
     <hr>
     <div class="option">
-      <div class="option-elements">
-        <span>Connect Spotify</span>
+      <div class="option-elements" (click)="onSpotifyConnect()">
+        <span>{{this.user.spotifyId ? 'Disconnect Spotify' : 'Connect Spotify'}}</span>
         <i class="fa fa-angle-right"></i>
       </div>
       <hr>

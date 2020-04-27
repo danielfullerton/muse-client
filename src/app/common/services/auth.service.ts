@@ -19,6 +19,10 @@ export class AuthService {
     window.location.replace('http://localhost:3000/v1/auth/google/signIn');
   }
 
+  startSpotifySignIn() {
+    window.location.replace('http://localhost:3000/v1/auth/spotify/signIn');
+  }
+
   getUser() {
     return this.user;
   }

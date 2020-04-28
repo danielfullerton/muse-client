@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 // todo: dedicated file
 export interface NavStyle {
   backgroundColor: string;
+  titleVisible: boolean;
 }
 
 @Injectable({
@@ -11,7 +12,8 @@ export interface NavStyle {
 })
 export class NavigationService {
   private style: NavStyle = {
-    backgroundColor: '#00000000'
+    backgroundColor: '#00000000',
+    titleVisible: true
   };
 
   stylesChanged = new Subject<NavStyle>();
@@ -31,10 +33,6 @@ export class NavigationService {
     this.setStyles({
       backgroundColor: '#222222'
     });
-  }
-
-  lightMode() {
-
   }
 
   transparentMode() {

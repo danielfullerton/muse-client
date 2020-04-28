@@ -16,6 +16,7 @@ import {RedirectToPlaylistsGuard} from './common/guards/redirectToPlaylists.guar
 import { PlaylistsComponent } from './playlists/playlists.component';
 import {FetchPlaylistsGuard} from './common/guards/fetchPlaylists.guard';
 import { TruncatePipe } from './common/pipes/truncate.pipe';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TruncatePipe } from './common/pipes/truncate.pipe';
     AccountComponent,
     SettingsComponent,
     PlaylistsComponent,
-    TruncatePipe
+    TruncatePipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

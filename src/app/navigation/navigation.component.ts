@@ -17,6 +17,8 @@ export class NavigationComponent implements OnInit {
   navBar: ElementRef;
   showSideBar = false;
 
+  titleVisible = true;
+
   user: User;
   userChanged: Subscription;
 
@@ -28,6 +30,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.navigationService.stylesChanged.subscribe(styles => {
       this.navBar.nativeElement.style.backgroundColor = styles.backgroundColor;
+      this.titleVisible = styles.titleVisible;
     });
 
     this.navigationService.sideBarClosed.subscribe(() => {

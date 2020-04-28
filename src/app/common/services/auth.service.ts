@@ -31,12 +31,14 @@ export class AuthService {
     return 'http://localhost:3000/v1/auth/google/signIn' + queryString;
   }
 
-  getSpotifyAuthUrl() {
-    return 'http://localhost:3000/v1/auth/spotify/signIn';
+  getSpotifyAuthUrl(stateObject: StateObject = {}) {
+    const queryString = this.buildQueryString(stateObject);
+    return 'http://localhost:3000/v1/auth/spotify/signIn' + queryString;
   }
 
-  getYoutubeAuthUrl() {
-    return 'http://localhost:3000/v1/auth/youtube/signIn';
+  getYoutubeAuthUrl(stateObject: StateObject = {}) {
+    const queryString = this.buildQueryString(stateObject);
+    return 'http://localhost:3000/v1/auth/youtube/signIn' + queryString;
   }
 
   startGoogleSignIn() {
@@ -45,11 +47,11 @@ export class AuthService {
   }
 
   startSpotifySignIn() {
-    window.location.replace(this.getSpotifyAuthUrl());
+    window.location.replace(this.getSpotifyAuthUrl({ redirectPath: '/home' }));
   }
 
   startYoutubeSignIn() {
-    window.location.replace(this.getYoutubeAuthUrl());
+    window.location.replace(this.getYoutubeAuthUrl({ redirectPath: '/settings' }));
   }
 
   getUser() {

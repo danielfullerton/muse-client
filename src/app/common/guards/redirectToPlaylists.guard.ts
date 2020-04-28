@@ -10,7 +10,8 @@ export class RedirectToPlaylistsGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authService.getUser()) {
+    const user = this.authService.getUser();
+    if (user && user.spotifyId) {
       this.router.navigate(['/playlists'])
         .catch(console.error);
     }

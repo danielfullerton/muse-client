@@ -1,3 +1,22 @@
 <div id="playlists" class="padded-full-screen padded-top">
-  <p>Playlists works</p>
+  <div class="title-container">
+    <h1>Muse</h1>
+  </div>
+  <div class="search-container">
+
+  </div>
+  <div class="playlists-container">
+    <div class="playlist" *ngFor="let playlist of playlists; let i = index;">
+      <div class="playlist-item">
+        <div class="playlist-info">
+          <h4>{{playlist.name}}</h4>
+          <p>Contains {{playlist.tracks.total}} songs</p>
+        </div>
+        <div class="playlist-options">
+          <i class="fa fa-ellipsis-v"></i>
+        </div>
+      </div>
+      <hr *ngIf="i !== playlists.length - 1">
+    </div>
+  </div>
 </div>

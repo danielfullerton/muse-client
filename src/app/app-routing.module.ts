@@ -8,6 +8,7 @@ import {SettingsComponent} from './settings/settings.component';
 import {FetchUserGuard} from './common/guards/fetchUser.guard';
 import {RedirectToPlaylistsGuard} from './common/guards/redirectToPlaylists.guard';
 import {PlaylistsComponent} from './playlists/playlists.component';
+import {FetchPlaylistsGuard} from './common/guards/fetchPlaylists.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
       {
         path: 'playlists',
         component: PlaylistsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, FetchPlaylistsGuard]
       },
       {
         path: 'account',

@@ -19,7 +19,6 @@ export class SpotifyService {
   }
 
   fetchPlaylists() {
-    console.log('fetching playlists');
     return this.http.get('/v1/spotify/playlists')
       .pipe(tap((playlists: any) => {
         this.playlists = playlists.items;

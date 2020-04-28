@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -17,6 +17,8 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import {FetchPlaylistsGuard} from './common/guards/fetchPlaylists.guard';
 import { TruncatePipe } from './common/pipes/truncate.pipe';
 import { LoaderComponent } from './loader/loader.component';
+import { ApiProvider } from './common/providers/api.provider';
+import {ApiCallInterceptor} from './common/interceptors/api-call.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,13 @@ import { LoaderComponent } from './loader/loader.component';
     AuthGuard,
     FetchUserGuard,
     FetchPlaylistsGuard,
-    RedirectToPlaylistsGuard
+    RedirectToPlaylistsGuard,
+    ApiProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiCallInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

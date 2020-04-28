@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {User} from '../models/user.model';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {API_PROVIDER, IApiProvider} from '../providers/api.provider';
 
 // todo: dedicate file
 export interface StateObject {
@@ -19,7 +20,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    @Inject(API_PROVIDER) private readonly api: IApiProvider
   ) {}
 
   buildQueryString(obj: any) {
@@ -28,17 +30,17 @@ export class AuthService {
 
   getGoogleAuthUrl(stateObject: StateObject = {}) {
     const queryString = this.buildQueryString(stateObject);
-    return 'http://localhost:3000/v1/auth/google/signIn' + queryString;
+    return `${this.api.apiUrl}/v1/auth/google/signIn` + queryString;
   }
 
   getSpotifyAuthUrl(stateObject: StateObject = {}) {
     const queryString = this.buildQueryString(stateObject);
-    return 'http://localhost:3000/v1/auth/spotify/signIn' + queryString;
+    return `${this.api.apiUrl}/v1/auth/spotify/signIn` + queryString;
   }
 
   getYoutubeAuthUrl(stateObject: StateObject = {}) {
     const queryString = this.buildQueryString(stateObject);
-    return 'http://localhost:3000/v1/auth/youtube/signIn' + queryString;
+    return `${this.api.apiUrl}/v1/auth/youtube/signIn` + queryString;
   }
 
   startGoogleSignIn() {
@@ -59,6 +61,7 @@ export class AuthService {
   }
 
   fetchUser() {
+    console.log(this.api.apiUrl);
     return this.http.get('/v1/auth/user')
       .pipe(tap((user: User) => {
         this.user = user;

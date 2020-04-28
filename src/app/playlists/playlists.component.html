@@ -9,7 +9,7 @@
     <div class="playlist" *ngFor="let playlist of playlists; let i = index;">
       <div class="playlist-item">
         <div class="playlist-info">
-          <h4>{{playlist.name}}</h4>
+          <h4>{{playlist.name | truncate}}</h4>
           <p>Contains {{playlist.tracks.total}} songs</p>
         </div>
         <div class="playlist-options">

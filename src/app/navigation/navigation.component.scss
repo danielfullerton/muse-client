@@ -74,7 +74,6 @@
         justify-content: flex-end;
         align-items: center;
         width: 100%;
-        padding-bottom: 15px;
         height: 5%;
 
         span {
@@ -107,10 +106,16 @@
         height: 70%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        margin-top: 10px;
 
         .option {
           padding: 10px 20px;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+
           a {
             display: block;
             text-align: right;
@@ -124,11 +129,15 @@
               color: #5CDB95;
             }
           }
+          i {
+            font-size: 20px;
+            margin-left: 15px;
+            color: #aaa;
+          }
         }
 
         hr {
-          margin-left: 30%;
-          width: 70%;
+          width: 100%;
           border-style: solid;
           border-color: #888888;
           border-width: 0.1px;

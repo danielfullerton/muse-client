@@ -16,7 +16,7 @@
     *ngIf="showSideBar">
     <div id="sidebar" #sidebar>
       <div class="sidebar-header" *ngIf="user">
-        <span>{{user.email}}</span>
+        <span>Welcome, {{user.firstName}}</span>
         <div class="profile-img" [routerLink]="['/account']">
           <img [src]="user.photoUrl" alt="User Photo">
         </div>
@@ -27,18 +27,22 @@
         <hr>
         <div class="option">
           <a [routerLink]="['/']">Home</a>
+          <i class="fa fa-angle-right"></i>
         </div>
         <hr>
         <div class="option">
           <a [routerLink]="['/settings']">Settings</a>
+          <i class="fa fa-angle-right"></i>
         </div>
         <hr>
         <div class="option">
           <a [routerLink]="['/contact']">Contact Us</a>
+          <i class="fa fa-angle-right"></i>
         </div>
         <hr>
         <div class="option">
           <a [routerLink]="['/upgrade']" class="green-text">Upgrade</a>
+          <i class="fa fa-angle-right"></i>
         </div>
         <hr>
       </div>

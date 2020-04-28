@@ -6,6 +6,7 @@ export interface IUser {
   spotifyId: string;
   premium: boolean;
   youtubeConnected: boolean;
+  photoUrl: string;
 }
 
 export class User implements IUser {
@@ -16,8 +17,9 @@ export class User implements IUser {
   premium: boolean;
   spotifyId: string;
   youtubeConnected: boolean;
+  photoUrl: string;
 
-  constructor(email: string, firstName: string, googleId: string, lastName: string, premium: boolean, spotifyId: string, youtubeConnected: boolean) {
+  constructor(email: string, firstName: string, googleId: string, lastName: string, premium: boolean, spotifyId: string, youtubeConnected: boolean, photoUrl: string) {
     this.email = email;
     this.firstName = firstName;
     this.googleId = googleId;
@@ -25,5 +27,6 @@ export class User implements IUser {
     this.premium = premium;
     this.spotifyId = spotifyId;
     this.youtubeConnected = youtubeConnected;
+    this.photoUrl = photoUrl;
   }
 }

@@ -1,5 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NavigationService, NavStyle} from './navigation.service';
+import {AuthService} from '../common/services/auth.service';
+import {User} from '../common/models/user.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -14,8 +17,12 @@ export class NavigationComponent implements OnInit {
   navBar: ElementRef;
   showSideBar = false;
 
+  user: User;
+  userChanged: Subscription;
+
   constructor(
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -25,6 +32,11 @@ export class NavigationComponent implements OnInit {
 
     this.navigationService.sideBarClosed.subscribe(() => {
       this.showSideBar = false;
+    });
+
+    this.user = this.authService.getUser();
+    this.userChanged = this.authService.userChanged.subscribe(user => {
+      this.user = user;
     });
   }
 

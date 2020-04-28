@@ -15,17 +15,49 @@
     (click)="onContainerClick($event)"
     *ngIf="showSideBar">
     <div id="sidebar" #sidebar>
-      <div class="option">
-        <a [routerLink]="['/']">Home</a>
+      <div class="sidebar-header" *ngIf="user">
+        <span>{{user.email}}</span>
+        <div class="profile-img" [routerLink]="['/account']">
+          <img [src]="user.photoUrl" alt="User Photo">
+        </div>
       </div>
-      <hr>
-      <div class="option">
-        <a [routerLink]="['/settings']">Settings</a>
+<!--      <hr *ngIf="user" class="header-border">-->
+
+      <div class="sidebar-options">
+        <hr>
+        <div class="option">
+          <a [routerLink]="['/']">Home</a>
+        </div>
+        <hr>
+        <div class="option">
+          <a [routerLink]="['/settings']">Settings</a>
+        </div>
+        <hr>
+        <div class="option">
+          <a [routerLink]="['/contact']">Contact Us</a>
+        </div>
+        <hr>
+        <div class="option">
+          <a [routerLink]="['/upgrade']" class="green-text">Upgrade</a>
+        </div>
+        <hr>
       </div>
-      <hr>
-      <div class="option">
-        <a [routerLink]="['/contact']">Contact Us</a>
+
+      <div class="social">
+        <div class="social-row">
+          <i class="fa fa-twitter"></i>
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-instagram"></i>
+        </div>
+        <div class="social-row">
+          <i class="fa fa-phone"></i>
+          <i class="fa fa-envelope-o"></i>
+        </div>
       </div>
+
+      <footer>
+        <p>&copy; Really Good Software LLC 2020. All Rights Reserved.</p>
+      </footer>
     </div>
   </div>
 </div>

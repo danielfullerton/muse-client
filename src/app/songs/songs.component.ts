@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {NavigationService} from '../navigation/navigation.service';
 import {Resource} from '../common/components/resource-scroller/resource-scroller.component';
 import {Router} from '@angular/router';
+import {YoutubeService} from '../common/services/youtube.service';
 
 @Component({
   selector: 'app-songs',
@@ -19,6 +20,7 @@ export class SongsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly spotifyService: SpotifyService,
+    private readonly youtubeService: YoutubeService,
     private readonly navigationService: NavigationService,
     private readonly router: Router
   ) { }
@@ -41,7 +43,12 @@ export class SongsComponent implements OnInit, OnDestroy {
   private setResources() {
     this.resources = this.songs.map(song => {
       return {
-        onItemClick: () => {},
+        onItemClick: () => {
+          this.youtubeService.convertSong(song.track.name, song.track.artists[0].name)
+            .subscribe((response: any) => {
+              window.location.replace('https://youtube.com/watch?v=' + response.items[0].id.videoId);
+            });
+        },
         onOptionsClick: () => {},
         displayName: song.track.name,
         subText: song.track.artists[0].name

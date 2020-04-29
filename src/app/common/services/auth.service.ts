@@ -61,7 +61,6 @@ export class AuthService {
   }
 
   fetchUser() {
-    console.log(this.api.apiUrl);
     return this.http.get('/v1/auth/user')
       .pipe(tap((user: User) => {
         this.user = user;

@@ -22,6 +22,7 @@ import {ApiCallInterceptor} from './common/interceptors/api-call.interceptor';
 import { SongsComponent } from './songs/songs.component';
 import {FetchSongsGuard} from './common/guards/fetchSongs.guard';
 import { ResourceScrollerComponent } from './common/components/resource-scroller/resource-scroller.component';
+import {SetPlaylistFromRouteGuard} from './common/guards/setPlaylistFromRoute.guard';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ResourceScrollerComponent } from './common/components/resource-scroller
     FetchPlaylistsGuard,
     RedirectToPlaylistsGuard,
     FetchSongsGuard,
+    SetPlaylistFromRouteGuard,
     ApiProvider,
     {
       provide: HTTP_INTERCEPTORS,

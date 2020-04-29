@@ -11,6 +11,7 @@ import {PlaylistsComponent} from './playlists/playlists.component';
 import {FetchPlaylistsGuard} from './common/guards/fetchPlaylists.guard';
 import {FetchSongsGuard} from './common/guards/fetchSongs.guard';
 import {SongsComponent} from './songs/songs.component';
+import {SetPlaylistFromRouteGuard} from './common/guards/setPlaylistFromRoute.guard';
 
 const routes: Routes = [
   {
@@ -32,9 +33,9 @@ const routes: Routes = [
         canActivate: [AuthGuard, FetchPlaylistsGuard]
       },
       {
-        path: 'songs',
+        path: 'playlists/:id/songs',
         component: SongsComponent,
-        canActivate: [AuthGuard, FetchSongsGuard]
+        canActivate: [AuthGuard, FetchPlaylistsGuard, SetPlaylistFromRouteGuard, FetchSongsGuard]
       },
       {
         path: 'account',

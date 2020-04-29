@@ -37,8 +37,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   }
 
   playlistSelected(playlist: any) {
-    this.spotifyService.setSelectedPlaylist(playlist);
-    this.router.navigate(['/songs'])
+    this.router.navigate(['playlists', playlist.id, 'songs'])
       .catch(console.error);
   }
 

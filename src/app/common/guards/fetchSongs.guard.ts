@@ -12,15 +12,11 @@ export class FetchSongsGuard implements CanActivate {
   ) {}
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    if (!this.spotifyService.getSelectedPlaylist()) {
-      this.router.navigate(['/'])
-        .catch(console.error);
-      return true;
-    }
+    const id = route.params.id;
     try {
       this.loaderService.flash();
       this.loaderService.start();
-      await this.spotifyService.fetchSongs().toPromise();
+      await this.spotifyService.fetchSongs(id).toPromise();
       this.loaderService.stop();
     } catch (e) {
       alert('Failed to fetch songs');

@@ -32,6 +32,14 @@ export class SpotifyService {
       }));
   }
 
+  fetchSelectedPlaylist(id: string) {
+    return this.http.get('/v1/spotify/playlists/' + id)
+      .pipe(tap((playlist) => {
+        this.setSelectedPlaylist(playlist);
+        this.selectedPlaylistChanged.next(playlist);
+      }));
+  }
+
   getSelectedPlaylist() {
     return this.selectedPlaylist;
   }
@@ -41,8 +49,8 @@ export class SpotifyService {
     this.selectedPlaylistChanged.next(playlist);
   }
 
-  fetchSongs() {
-    return this.http.get('/v1/spotify/playlists/' + this.selectedPlaylist.id + '/songs')
+  fetchSongs(id: string) {
+    return this.http.get('/v1/spotify/playlists/' + id + '/songs')
       .pipe(tap((songs: any) => {
         this.songs = songs.items;
         this.songsChanged.next(songs.items);

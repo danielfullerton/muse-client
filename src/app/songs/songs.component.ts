@@ -39,7 +39,6 @@ export class SongsComponent implements OnInit, OnDestroy {
   }
 
   private setResources() {
-    console.log(this.songs);
     this.resources = this.songs.map(song => {
       return {
         onItemClick: () => {},

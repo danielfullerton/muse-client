@@ -3,6 +3,7 @@ import {SpotifyService} from '../common/services/spotify.service';
 import {Subscription} from 'rxjs';
 import {NavigationService} from '../navigation/navigation.service';
 import {Resource} from '../common/components/resource-scroller/resource-scroller.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-songs',
@@ -18,7 +19,8 @@ export class SongsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly spotifyService: SpotifyService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly router: Router
   ) { }
 
   ngOnInit() {
@@ -46,5 +48,10 @@ export class SongsComponent implements OnInit, OnDestroy {
         subText: song.track.artists[0].name
       };
     });
+  }
+
+  backButtonClicked() {
+    this.router.navigate(['/playlists'])
+      .catch(console.error);
   }
 }

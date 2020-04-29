@@ -1,12 +1,12 @@
 <div id="songs" class="padded-top padded-full-screen">
   <div class="title-container">
-    <h2>{{playlist.name}}</h2>
+    <h2>{{playlist.name | truncate:20}}</h2>
   </div>
   <div class="search-container">
-
+    <i class="fa fa-arrow-left" (click)="backButtonClicked()"></i>
   </div>
   <app-resource-scroller
     [resources]="resources"
-    height="calc(80% - 10px)">
+    height="calc(70% - 10px)">
   </app-resource-scroller>
 </div>

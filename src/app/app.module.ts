@@ -19,6 +19,9 @@ import { TruncatePipe } from './common/pipes/truncate.pipe';
 import { LoaderComponent } from './loader/loader.component';
 import { ApiProvider } from './common/providers/api.provider';
 import {ApiCallInterceptor} from './common/interceptors/api-call.interceptor';
+import { SongsComponent } from './songs/songs.component';
+import {FetchSongsGuard} from './common/guards/fetchSongs.guard';
+import { ResourceScrollerComponent } from './common/components/resource-scroller/resource-scroller.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import {ApiCallInterceptor} from './common/interceptors/api-call.interceptor';
     SettingsComponent,
     PlaylistsComponent,
     TruncatePipe,
-    LoaderComponent
+    LoaderComponent,
+    SongsComponent,
+    ResourceScrollerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ import {ApiCallInterceptor} from './common/interceptors/api-call.interceptor';
     FetchUserGuard,
     FetchPlaylistsGuard,
     RedirectToPlaylistsGuard,
+    FetchSongsGuard,
     ApiProvider,
     {
       provide: HTTP_INTERCEPTORS,

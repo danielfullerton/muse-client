@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NavigationService, NavStyle} from './navigation.service';
+import {NavigationService} from './navigation.service';
 import {AuthService} from '../common/services/auth.service';
 import {User} from '../common/models/user.model';
 import {Subscription} from 'rxjs';
@@ -17,10 +17,9 @@ export class NavigationComponent implements OnInit {
   navBar: ElementRef;
   showSideBar = false;
 
-  titleVisible = true;
-
   user: User;
-  userChanged: Subscription;
+
+  title: string;
 
   constructor(
     private navigationService: NavigationService,
@@ -28,18 +27,18 @@ export class NavigationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.navigationService.stylesChanged.subscribe(styles => {
-      this.navBar.nativeElement.style.backgroundColor = styles.backgroundColor;
-      this.titleVisible = styles.titleVisible;
-    });
-
     this.navigationService.sideBarClosed.subscribe(() => {
       this.showSideBar = false;
     });
 
     this.user = this.authService.getUser();
-    this.userChanged = this.authService.userChanged.subscribe(user => {
+    this.authService.userChanged.subscribe(user => {
       this.user = user;
+    });
+
+    this.title = this.navigationService.getTitle();
+    this.navigationService.titleChanged.subscribe(title => {
+      this.title = title;
     });
   }
 

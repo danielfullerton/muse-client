@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NavigationService} from '../navigation/navigation.service';
 
 @Component({
   selector: 'app-learn-more',
@@ -7,7 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LearnMoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly navigationService: NavigationService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.navigationService.setTitle('Learn More');
+  }
 }

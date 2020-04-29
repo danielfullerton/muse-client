@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../common/services/auth.service';
 import {User} from '../common/models/user.model';
 import {Subscription} from 'rxjs';
+import {NavigationService} from '../navigation/navigation.service';
 
 @Component({
   selector: 'app-account',
@@ -16,10 +17,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly navigationService: NavigationService
   ) { }
 
   ngOnInit() {
+    this.navigationService.setTitle('Muse');
+
     this.user = this.authService.getUser();
     this.userChanged = this.authService.userChanged.subscribe(user => {
       this.user = user;

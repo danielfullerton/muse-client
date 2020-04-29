@@ -1,0 +1,14 @@
+<div class="resource-scroller" [ngStyle]="{height: this.height}">
+  <div class="resource" *ngFor="let resource of resources; let i = index;">
+    <div class="resource-item">
+      <div class="resource-info" (click)="resource.onItemClick()">
+        <h4>{{ resource.displayName | truncate }}</h4>
+        <p>{{ resource.subText | truncate }}</p>
+      </div>
+      <div class="resource-options" (click)="resource.onOptionsClick(i)">
+        <i class="fa fa-ellipsis-v"></i>
+      </div>
+    </div>
+    <hr *ngIf="i !== resources.length - 1">
+  </div>
+</div>

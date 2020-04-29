@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../common/services/auth.service';
 import {User} from '../common/models/user.model';
 import {Subscription} from 'rxjs';
+import {NavigationService} from '../navigation/navigation.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,10 +14,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
   userChanged: Subscription;
 
   constructor(
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly navigationService: NavigationService
   ) { }
 
   ngOnInit() {
+    this.navigationService.setTitle('Settings');
+
     this.user = this.authService.getUser();
     this.userChanged = this.authService.userChanged.subscribe((user: User) => {
       this.user = user;

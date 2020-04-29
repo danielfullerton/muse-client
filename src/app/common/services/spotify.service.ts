@@ -10,6 +10,12 @@ export class SpotifyService {
   private playlists = [];
   playlistsChanged = new Subject<any[]>();
 
+  private selectedPlaylist: any = null;
+  selectedPlaylistChanged = new Subject<any>();
+
+  private songs = [];
+  songsChanged = new Subject<any[]>();
+
   constructor(
     private http: HttpClient
   ) {}
@@ -24,5 +30,26 @@ export class SpotifyService {
         this.playlists = playlists.items;
         this.playlistsChanged.next(playlists.items);
       }));
+  }
+
+  getSelectedPlaylist() {
+    return this.selectedPlaylist;
+  }
+
+  setSelectedPlaylist(playlist: any) {
+    this.selectedPlaylist = playlist;
+    this.selectedPlaylistChanged.next(playlist);
+  }
+
+  fetchSongs() {
+    return this.http.get('/v1/spotify/playlists/' + this.selectedPlaylist.id + '/songs')
+      .pipe(tap((songs: any) => {
+        this.songs = songs.items;
+        this.songsChanged.next(songs.items);
+      }));
+  }
+
+  getSongs() {
+    return this.songs;
   }
 }
